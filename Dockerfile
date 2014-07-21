@@ -11,6 +11,4 @@ ADD dist/kafka_$KAFKA_RELEASE.tgz /opt/
 ADD server.properties $KAFKA_HOME/config/server.properties
 ADD start.sh /start.sh
 
-WORKDIR $KAFKA_HOME
-
 CMD ["/start.sh"]
