@@ -6,7 +6,7 @@ Type=simple
 EnvironmentFile=/etc/environment
 Environment="TAG=0.8.1.1"
 Environment="ENV=test"
-ExecStartPre=-/usr/bin/docker pull emmanuel/kafka:${TAG}
+# ExecStartPre=-/usr/bin/docker pull emmanuel/kafka:${TAG}
 ExecStart=/usr/bin/docker run --rm \
                               --name kafka \
                               --env KAFKA_SERVER_NUMBER=%i \
