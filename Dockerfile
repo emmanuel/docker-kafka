@@ -7,6 +7,6 @@ RUN mv /opt/kafka_$KAFKA_VERSION /opt/kafka
 WORKDIR /opt/kafka
 
 ADD server.properties /opt/kafka/config/server.properties
-ADD start.sh /opt/kafka
+ADD start.sh /start.sh
 
-CMD ["/opt/kafka/start.sh"]
+CMD ["/start.sh"]
