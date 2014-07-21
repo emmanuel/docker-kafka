@@ -1,12 +1,16 @@
 FROM emmanuel/java-openjdk-7-jre-headless:0.0.2
 MAINTAINER Emmanuel Gomez "emmanuel@gomez.io"
 
-ENV KAFKA_VERSION 2.9.2-0.8.1.1
-ADD kafka_$KAFKA_VERSION.tgz /opt/
-RUN mv /opt/kafka_$KAFKA_VERSION /opt/kafka
-WORKDIR /opt/kafka
+ENV KAFKA_SCALA_VERSION 2.9.2
+ENV KAFKA_VERSION 0.8.1.1
 
-ADD server.properties /opt/kafka/config/server.properties
+ENV KAFKA_RELEASE $KAFKA_SCALA_VERSION-$KAFKA_VERSION
+ENV KAFKA_HOME /opt/kafka_$KAFKA_RELEASE
+
+ADD dist/kafka_$KAFKA_RELEASE.tgz /opt/
+ADD server.properties $KAFKA_HOME/config/server.properties
 ADD start.sh /start.sh
+
+WORKDIR $KAFKA_HOME
 
 CMD ["/start.sh"]
